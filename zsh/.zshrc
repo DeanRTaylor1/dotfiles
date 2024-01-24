@@ -1,9 +1,30 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
+alias lsa='ls -la'
+
+autoload -Uz vcs_info
+precmd() {
+  # Fetching the latest Git branch information
+  vcs_info
+
+  # Defining the prompt with your preferred format and dynamic Git info
+PROMPT='%F{cyan}┌─[%F{green}%n@%m%F{cyan}] - [%F{blue}%~%F{cyan}] - [%F{magenta}%D{%Y-%m-%d %H:%M:%S}%f]
+%F{cyan}└─[%F{yellow}%?%F{cyan}] <%(!.%B.%b) %F{red}${vcs_info_msg_0_}%F{cyan}> %f'
+
+  RPROMPT=' %F{005}%T%f'
+}
+
+# Enable prompt substitution to ensure dynamic updates
+setopt prompt_subst
+
+# Configuring the vcs_info function to output the branch name
+zstyle ':vcs_info:git:*' formats '(%b) '
+
 
 
 #function to find a directory and cd there using fzf
@@ -47,31 +68,6 @@ function desktop() {
 }
 alias desktop='desktop'
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-plugins=(git npm docker colorize golang)
-
-source $ZSH/oh-my-zsh.sh
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -91,4 +87,4 @@ function test_file() {
   yarn db:refresh
   npx jest "$1"
 }
-alias tfi="test_file"
+alias tfi="test_file
