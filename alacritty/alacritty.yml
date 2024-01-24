@@ -282,11 +282,10 @@ colors: *gruvbox_material_medium_dark
 
 font:
   normal:
-    family: 'JetBrainsMono Nerd Font'
-    style: 'Thin'
+    family: 'NotCourier Nerd Font'
 
 
-  size: 12
+  size: 14
 
 key_bindings:
   - { key: B, mods: Command, chars: "\x02[" } # enter tmux scroll mode
