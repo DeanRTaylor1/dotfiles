@@ -1,3 +1,5 @@
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -14,7 +16,7 @@ precmd() {
 
   # Defining the prompt with your preferred format and dynamic Git info
 PROMPT='%F{cyan}┌─[%F{green}%n@%m%F{cyan}] - [%F{blue}%~%F{cyan}] - [%F{magenta}%D{%Y-%m-%d %H:%M:%S}%f]
-%F{cyan}└─[%F{yellow}%?%F{cyan}] <%(!.%B.%b) %F{red}${vcs_info_msg_0_}%F{cyan}> %f'
+%F{cyan}└─[%F{yellow}%?%F{cyan}] <%(!.%B.%b) %F{red}${vcs_info_msg_0_}%F{cyan}> ~ %f'
 
   RPROMPT=' %F{005}%T%f'
 }
@@ -75,16 +77,36 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # opam configuration
 [[ ! -r /Users/deantaylor/.opam/opam-init/init.zsh ]] || source /Users/deantaylor/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-export PATH="/usr/local/opt/python@3.11/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"
-export PATH=$PATH:$(go env GOPATH)/bin
 
-export PATH="/opt/homebrew/opt/php@8.0/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@8.0/sbin:$PATH"
+# Set Python PATH
+export PATH="/usr/local/opt/python@3.11/bin:/opt/homebrew/opt/python@3.11/bin:$PATH"
+
+# Set Go PATH
+export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH=$PATH:$HOME/go/bin
+
+
+# Ensure standard system paths are included
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+# export PATH=$PATH:$(go env GOPATH)/bin
+export PATH="/opt/homebrew/opt/python@3.11/bin:/usr/local/opt/python@3.11/bin:/Users/deantaylor/.opam/default/bin:/Users/deantaylor/.nvm/versions/node/v20.10.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/Users/deantaylor/.composer/vendor/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/deantaylor/.cargo/bin:/Users/deantaylor/go/bin
+"
+
 function test_file() {
   export NODE_ENV=test
   yarn db:refresh
   npx jest "$1"
 }
-alias tfi="test_file
+alias tfi="test_file"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/deantaylor/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP 8.2 configuration.
+export HERD_PHP_82_INI_SCAN_DIR="/Users/deantaylor/Library/Application Support/Herd/config/php/82/"
+
+
+# Herd injected PHP 8.1 configuration.
+export HERD_PHP_81_INI_SCAN_DIR="/Users/deantaylor/Library/Application Support/Herd/config/php/81/"
