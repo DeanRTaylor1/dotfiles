@@ -139,8 +139,10 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+-- vim.o.listchars = "trail:-,nbsp:+,tab:▏ ,eol:↴"
+vim.o.list = true
+vim.opt.listchars = { tab = '▏ ', trail = '-', nbsp = '+', eol = '↲' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -757,8 +759,13 @@ require('lazy').setup({
     end,
   },
 
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  -- Highlight todo, notes, etc in comment
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+  },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -840,9 +847,9 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
-  { 'vim-lua/plenary.nvim' },
-  -- { 'deanrtaylor1/inline-types.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
-  { dir = '/Users/deantaylor/Desktop/coding/deanrtaylor1/inline-types.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
+  { 'nvim-lua/plenary.nvim' },
+  { 'deanrtaylor1/inline-types.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
+  -- { dir = '/Users/deantaylor/Desktop/coding/deanrtaylor1/inline-types.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
