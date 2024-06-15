@@ -1,0 +1,169 @@
+import = [
+    "~/.config/alacritty/themes/themes/noctis-lux.toml"
+]
+
+[font]
+size = 14
+
+[font.normal]
+family = "Iosevka"
+style = "Extralight"
+
+[font.bold]
+family = "Iosevka"
+style = "Bold"
+
+[font.italic]
+family = "Iosevka"
+style = "Light Italic"
+
+[font.offset]
+x = 6
+y = 0
+
+[[keyboard.bindings]]
+chars = "\u0002["
+key = "B"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002\""
+key = "E"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002%"
+key = "E"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = """
+lfcd
+"""
+key = "F"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002[/"
+key = "F"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0002T"
+key = "J"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002s"
+key = "K"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002L"
+key = "L"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002u"
+key = "O"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+:GoToFile
+"""
+key = "P"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+:GoToCommand
+"""
+key = "P"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = """
+:q
+"""
+key = "Q"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+\u001B:w
+"""
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002x"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002z"
+key = "Z"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002n"
+key = "Tab"
+mods = "Control"
+
+# [[keyboard.bindings]]
+# chars = "\u0002p"
+# key = "Grave"
+# mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0002,"
+key = "Comma"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000F"
+key = "LBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002p"
+key = "LBracket"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\t"
+key = "RBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002n"
+key = "RBracket"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0002:"
+key = "Semicolon"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00021"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+\u0002source-file ~/.tmux.conf && ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+"""
+key = "I"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002,"
+key = "R"
+mods = "Command"
