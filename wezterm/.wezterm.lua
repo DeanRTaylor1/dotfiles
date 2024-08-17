@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 config.color_scheme = "Catppuccin Mocha"
 -- config.color_scheme = "Atelier Dune (base16)"
 -- config.color_scheme = "Belge (terminal.sexy)"
-config.font_size = 12.0
+config.font_size = 24.0
 -- config.font = wezterm.font("JetBrains Mono")
 config.font = wezterm.font("Iosevka")
 
@@ -28,6 +28,11 @@ config.keys = {
 		key = "w",
 		mods = "CMD",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
+	},
+	{
+		key = "s",
+		mods = "CMD",
+		action = wezterm.action.SendString("\x13"),
 	},
 }
 
